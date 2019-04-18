@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                             |------+------|                  |------+------|
  *                             | CTRL |LOWER |                  |RAISE | ALT  |
  *                             |------+------|                  |------+------|
- *                             | META |SUPER |                  | FN   | SHFT |
+ *                             | SHFT |SUPER |                  | FN   | META |
  *                             +-------------+                  +-------------+
  */
 
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                      KC_MINUS,KC_EQL,                                             MOUSE  ,KC_BSLS,                 \
                                     KC_ENT , KC_SPC ,            KC_BSPC,  KC_TAB ,                                \
                                     KC_LCTL,  LOWER ,             RAISE ,  KC_LALT,                                \
-                                    KC_LGUI,  TEST  ,              FN   ,  KC_LSFT                                 \
+                                    KC_LSFT,  TEST  ,              FN   ,  KC_LGUI                                 \
 ),
 
 /* Base (lower)
