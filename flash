@@ -45,5 +45,5 @@ for hand in ${hands[@]} ; do
         read -r -p "Reset again" x
     fi
     sleep 2
-    avrdude -p m32u4 -P $SERIAL_PORT -c avr109 -U "flash:w:handwired_dactyl_manuform_4x6_${LAYOUT}.hex" || exit 3
+    avrdude -p m32u4 -P $SERIAL_PORT -c avr109 -U "flash:w:handwired_dactyl_manuform_4x6_${LAYOUT}.hex" -u || exit 3
 done
