@@ -46,7 +46,7 @@ enum {
 #define QWERTY DF(LAYER_QWERTY)
 #define MOUSE_A DF(LAYER_MOUSE_ASSIST)
 #define LOWER MO(LAYER_LOWER)
-#define RAISE MO(LAYER_RAISE)
+#define RAISE OSL(LAYER_RAISE)
 #define RA_LO MO(LAYER_RAISE_LOWER)
 #define FN MO(LAYER_FN)
 #define MOUSE DF(LAYER_MOUSE)
@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     _______,_______,            _______,_______                                    \
 ),
 
-/* Base (mosue assist)
+/* Base (mouse assist)
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      | del  | tabl | up   | tabr | pgup |                  |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
@@ -203,10 +203,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               +-------------+                                              +-------------+
  */
 [LAYER_TEST] = LAYOUT(
-    _______,RGB_TOG,XXXXXXX,XXXXXXX,XXXXXXX ,XXXXXXX,           XXXXXXX,KC_CBR ,KC_CBR ,XXXXXXX,XXXXXXX,XXXXXXX,   \
-    _______,RGB_HUI,RGB_SAI,RGB_VAI,RGB_MOD ,XXXXXXX,           XXXXXXX,KC_RBR ,KC_RBR ,XXXXXXX,XXXXXXX,XXXXXXX,   \
-    _______,RGB_HUD,RGB_SAD,RGB_VAD,RGB_RMOD,XXXXXXX,           XXXXXXX,KC_BBR ,KC_BBR ,XXXXXXX,XXXXXXX,XXXXXXX,   \
-                    XXXXXXX,XXXXXXX,                                            KC_PBR ,KC_PBR ,                   \
+    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,           XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
+    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,           XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
+    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,           XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
+                    XXXXXXX,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
                                     _______,_______,            _______,_______,                                   \
                                     _______,_______,            _______,_______,                                   \
                                     _______,XXXXXXX,            _______,_______                                    \
@@ -224,10 +224,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               +-------------+                                              +-------------+
  */
 [LAYER_MOUSE] = LAYOUT(
-    _______,_______,_______,_______,_______,_______,           _______,_______,_______,_______,KC_WH_D,KC_WH_D,   \
-    QWERTY ,_______,_______,_______,_______,_______,           KC_MS_L,KC_MS_D,KC_MS_U,KC_MS_R,KC_WH_U,KC_WH_U,   \
-    _______,_______,_______,_______,_______,_______,           XXXXXXX,XXXXXXX,XXXXXXX,KC_MS_U,KC_MS_R,QWERTY ,   \
-                    _______,_______,                                            KC_MS_L,KC_MS_D,                  \
+    _______,QWERTY ,QWERTY ,QWERTY ,QWERTY ,QWERTY ,           QWERTY ,QWERTY ,QWERTY ,QWERTY ,KC_WH_D,KC_WH_D,   \
+    QWERTY ,QWERTY ,QWERTY ,QWERTY ,QWERTY ,QWERTY ,           KC_MS_L,KC_MS_D,KC_MS_U,KC_MS_R,KC_WH_U,KC_WH_U,   \
+    _______,QWERTY ,QWERTY ,QWERTY ,QWERTY ,QWERTY ,           XXXXXXX,XXXXXXX,XXXXXXX,KC_MS_U,KC_MS_R,QWERTY ,   \
+                    QWERTY ,QWERTY ,                                            KC_MS_L,KC_MS_D,                  \
                                     _______,_______,            KC_BTN1,KC_BTN2,                                  \
                                     _______,_______,            _______,_______,                                  \
                                     _______,_______,            _______,_______                                   \
