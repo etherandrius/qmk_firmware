@@ -384,9 +384,6 @@ $(foreach OUTPUT,$(OUTPUTS),$(eval $(call GEN_OBJRULE,$(OUTPUT))))
 
 # Create preprocessed source for use in sending a bug report.
 %.i : %.c | $(BEGIN)
-	$(info $$CC is [${CC}])
-	@echo $(CC)
-	@echo $(CFLAGS)
 	$(CC) -E -mmcu=$(MCU) $(CFLAGS) $< -o $@
 
 # Target: clean project.
