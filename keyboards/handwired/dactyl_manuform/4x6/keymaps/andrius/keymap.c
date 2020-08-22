@@ -7,6 +7,7 @@ enum {
     LAYER_QWERTY = 0,
     LAYER_ADJUST,
     LAYER_LOWER,
+    LAYER_LOWE2,
     LAYER_RAISE,
     LAYER_RAISE_LOWER,
     LAYER_FN,
