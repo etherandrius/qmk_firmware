@@ -7,33 +7,15 @@ enum {
     LAYER_QWERTY = 0,
     LAYER_ADJUST,
     LAYER_LOWER,
-    LAYER_LOWE2,
     LAYER_RAISE,
-    LAYER_RAISE_LOWER,
     LAYER_FN,
-    LAYER_MOUSE,
-    LAYER_MOUSE_ASSIST,
-    LAYER_TEST,
 };
 
 // Custom keycodes
 enum {
     KC_CUSTOM_RESET = SAFE_RANGE,
-    KC_ROUND_POINTY,
-    KC_CURLY_BRACKETS,
-    KC_BLOCK_BRACKETS,
-    KC_ROUND_BRACKETS,
-    KC_POINT_BRACKETS,
 };
 #define KC_CRST KC_CUSTOM_RESET
-
-#define KC_RP KC_ROUND_POINTY
-
-#define KC_CBR KC_CURLY_BRACKETS
-#define KC_BBR KC_BLOCK_BRACKETS
-#define KC_RBR KC_ROUND_BRACKETS
-#define KC_PBR KC_POINT_BRACKETS
-
 
 #define C_LEFT C(KC_LEFT)
 #define C_RIGHT C(KC_RIGHT)
@@ -41,18 +23,12 @@ enum {
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
 
-// Fillers to make layering more clear
-
 // Layer switches
 #define QWERTY DF(LAYER_QWERTY)
-#define MOUSE_A DF(LAYER_MOUSE_ASSIST)
 #define LOWER MO(LAYER_LOWER)
 #define RAISE OSL(LAYER_RAISE)
-#define RA_LO MO(LAYER_RAISE_LOWER)
 #define FN MO(LAYER_FN)
-#define MOUSE DF(LAYER_MOUSE)
 
-#define TEST MO(LAYER_TEST)
 
 // Switch to function layer when held, escape when tapped
 #define AD_ESC LT(LAYER_ADJUST, KC_ESCAPE)
@@ -73,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                             |------+------|                  |------+------|
  *                             | CTRL |LOWER |                  |LOWER | ALT  |
  *                             |------+------|                  |------+------|
- *                             | GUI  | ALT  |                  | FN   | GUI  |
+ *                             |LOWER | ALT  |                  | FN   | GUI  |
  *                             +-------------+                  +-------------+
  */
 
@@ -81,10 +57,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      RAISE ,  KC_Q,  KC_W,   KC_E,   KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_DEL,   \
     AD_ESC ,  KC_A,  KC_S,   KC_D,   KC_F,   KC_G,               KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,  \
     KC_LSFT,  KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,               KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_RSFT,   \
-                     KC_MINUS,KC_EQL,                                             RAISE  ,KC_BSLS,                 \
+                     KC_MINUS,KC_EQL,                                            KC_RCTL,KC_BSLS,                 \
                                     KC_ENT , KC_SPC ,            KC_BSPC,  KC_TAB ,                                \
                                     KC_LCTL,  LOWER ,             LOWER ,  KC_RALT,                                \
-                                    KC_LGUI, KC_LALT,              FN   ,  KC_RGUI                                 \
+                                      LOWER, KC_LALT,              FN   ,  KC_RGUI                                 \
 ),
 
 /* Base (lower)
@@ -103,29 +79,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   KC_1,   KC_2,   KC_3,   KC_4,   KC_5,            KC_LEFT,KC_DOWN, KC_UP ,KC_RIGHT,_______,_______, \
     _______,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,            XXXXXXX,XXXXXXX,_______,_______,_______,_______,  \
                     XXXXXXX,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
-                                    MOUSE_A,_______,            _______,_______,                                   \
-                                    _______,XXXXXXX,             RA_LO ,_______,                                   \
-                                    _______,_______,            _______,_______                                    \
-),
-
-/* Base (lower-2)
- * +-----------------------------------------+                  +-----------------------------------------+
- * |      |      |      |      |      |      |                  |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                  |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                  |      |      |      |      |      |      |
- * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
- *               |      |      |                                              |      |      |
- *               +-------------+                                              +-------------+
- */
-[LAYER_LOWE2] = LAYOUT(
-    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,           XXXXXXX,   KC_7,   KC_8,   KC_9,XXXXXXX,XXXXXXX,   \
-    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,           XXXXXXX,   KC_4,   KC_5,   KC_6,XXXXXXX,XXXXXXX,   \
-    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,           XXXXXXX,   KC_1,   KC_2,   KC_3,XXXXXXX,XXXXXXX,   \
-                    XXXXXXX,XXXXXXX,                                              KC_0,XXXXXXX,                   \
-                                    _______,_______,            _______,KC_CAPS,                                   \
-                                    _______, RA_LO ,            XXXXXXX,_______,                                   \
+                                    _______,_______,            _______,_______,                                   \
+                                    _______,XXXXXXX,            _______,_______,                                   \
                                     _______,_______,            _______,_______                                    \
 ),
 
@@ -146,49 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,XXXXXXX,XXXXXXX,S(KC_7),S(KC_3),S(KC_1),            XXXXXXX,KC_LBRC,KC_RBRC,KC_UP ,KC_RIGHT,_______,  \
                     KC_PMNS,KC_PPLS,                                            KC_LEFT,KC_DOWN,                   \
                                     _______,_______,            _______,KC_CAPS,                                   \
-                                    _______, RA_LO ,            XXXXXXX,_______,                                   \
-                                    _______,_______,            _______,_______                                    \
-),
-
-/* Base (mouse assist)
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      | del  | tabl | up   | tabr | pgup |                  |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      | bspc | left | down | right| pgdw |                  |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                  |      |      |      |      |      |      |
- * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
- *               |      |      |                                              |      |      |
- *               +-------------+                                              +-------------+
- */
-[LAYER_MOUSE_ASSIST] = LAYOUT(
-    _______,KC_DEL ,C(KC_J),KC_UP  ,C(KC_K) ,KC_PGUP,           XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
-    _______,KC_BSPC,KC_LEFT,KC_DOWN,KC_RIGHT,KC_PGDOWN,         XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
-    _______,C(KC_Z),C(KC_X),C(KC_C),C(KC_V) ,XXXXXXX,           XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
-                    XXXXXXX,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
-                                    _______,_______,            _______,_______,                                   \
-                                    _______,QWERTY ,            _______,_______,                                   \
-                                    _______,_______,            _______,_______                                    \
-),
-
-/* Base (raise_lower)
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                  |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                  | C_L  | HOME | END  | C_R  |      |      |
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                  |      |      |      |      |      |      |
- * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
- *               |      |      |                                              |      |      |
- *               +-------------+                                              +-------------+
- */
-[LAYER_RAISE_LOWER] = LAYOUT(
-    _______,   KC_1,   KC_2,   KC_3,   KC_4,   KC_5,            XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
-    _______,   KC_1,   KC_2,   KC_3,   KC_4,   KC_5,             C_LEFT,KC_HOME, KC_END,C_RIGHT,XXXXXXX,XXXXXXX,   \
-    _______,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,            XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
-                    XXXXXXX,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
-                                    _______,_______,            _______,_______,                                   \
-                                    _______,XXXXXXX,            XXXXXXX,_______,                                   \
+                                    _______,_______,            XXXXXXX,_______,                                   \
                                     _______,_______,            _______,_______                                    \
 ),
 
@@ -213,47 +126,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     _______,_______,            XXXXXXX,_______                                    \
 ),
 
-/* Base (test)
- * +-----------------------------------------+                  +-----------------------------------------+
- * |      |      |      |      |      |      |                  |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                  |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                  |      |      |      |      |      |      |
- * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
- *               |      |      |                                              |      |      |
- *               +-------------+                                              +-------------+
- */
-[LAYER_TEST] = LAYOUT(
-    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,           XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
-    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,           XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
-    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,           XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
-                    XXXXXXX,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
-                                    _______,_______,            _______,_______,                                   \
-                                    _______,_______,            _______,_______,                                   \
-                                    _______,XXXXXXX,            _______,_______                                    \
-),
-
-/* Base (mouse)
- * +-----------------------------------------+                  +-----------------------------------------+
- * |QWERTY|      |      |      |      |      |                  |      |      |      |      | WH U | WH U |
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |QWERTY|      |      |      |      |      |                  | LEFT | DOWN | UP   |RIGHT | WH D | WH D |
- * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |QWERTY|      |      |      |      |      |                  |      |      |      | UP   |RIGHT |      |
- * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
- *               |      |      |                                              | LEFT | DOWN |
- *               +-------------+                                              +-------------+
- */
-[LAYER_MOUSE] = LAYOUT(
-    _______,QWERTY ,QWERTY ,QWERTY ,QWERTY ,QWERTY ,           QWERTY ,QWERTY ,QWERTY ,QWERTY ,KC_WH_D,KC_WH_D,   \
-    QWERTY ,QWERTY ,QWERTY ,QWERTY ,QWERTY ,QWERTY ,           KC_MS_L,KC_MS_D,KC_MS_U,KC_MS_R,KC_WH_U,KC_WH_U,   \
-    _______,QWERTY ,QWERTY ,QWERTY ,QWERTY ,QWERTY ,           XXXXXXX,XXXXXXX,XXXXXXX,KC_MS_U,KC_MS_R,QWERTY ,   \
-                    QWERTY ,QWERTY ,                                            KC_MS_L,KC_MS_D,                  \
-                                    _______,_______,            KC_BTN1,KC_BTN2,                                  \
-                                    _______,_______,            _______,_______,                                  \
-                                    _______,_______,            _______,_______                                   \
-),
 
 [LAYER_ADJUST] = LAYOUT(
     _______,_______,_______,_______,_______,_______,            _______,_______,_______,_______,_______,KC_CRST,   \
@@ -273,57 +145,10 @@ void persistent_default_layer_set(uint16_t default_layer) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case KC_CUSTOM_RESET:
-            if (record->event.pressed) {
-                // Send enter then reset the keyboard, so the flash script can proceed
-                register_code(KC_ENTER);
-                reset_keyboard();
-            }
-        // do not have return false here; (after the reset thing)
-        
-        // fixing raise lower layer.
-        // currnet problem if press lower, press raise, release lower then we are in later lower rather than raise
-
-        // below macros for double braces 
-        case KC_CURLY_BRACKETS:
-            if (record->event.pressed) {
-				register_code(KC_LSHIFT); // shift down
-                tap_code(KC_LBRACKET); // {
-                tap_code(KC_RBRACKET); // }
-				unregister_code(KC_LSHIFT); // shift up
-
-                tap_code(KC_LEFT); // <-
-            }
-            return false;
-        case KC_BLOCK_BRACKETS:
-            if (record->event.pressed) {
-                tap_code(KC_LBRACKET); // [
-                tap_code(KC_RBRACKET); // ]
-
-                tap_code(KC_LEFT); // <-
-            }
-            return false;
-        case KC_ROUND_BRACKETS:
-            if (record->event.pressed) {
-				register_code(KC_LSHIFT); // shift down
-                tap_code(KC_9); // (
-                tap_code(KC_0); // )
-				unregister_code(KC_LSHIFT); // shift up
-
-                tap_code(KC_LEFT); // <-
-            }
-            return false;
-        case KC_POINT_BRACKETS:
-            if (record->event.pressed) {
-				register_code(KC_LSHIFT); // shift down
-                tap_code(KC_COMMA); // <
-                tap_code(KC_DOT); // >
-				unregister_code(KC_LSHIFT); // shift up
-
-                tap_code(KC_LEFT); // <-
-            }
-            return false;
+    if (keycode == KC_CUSTOM_RESET && record->event.pressed) {
+        // Send enter then reset the keyboard, so the flash script can proceed
+        register_code(KC_ENTER);
+        reset_keyboard();
     }
     return true;
 }
