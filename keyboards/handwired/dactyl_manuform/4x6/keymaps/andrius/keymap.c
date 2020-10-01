@@ -113,9 +113,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [LAYER_RAISE] = LAYOUT(
     _______,XXXXXXX,XXXXXXX,S(KC_1),S(KC_6),S(KC_GRV),          XXXXXXX,KC_LCBR,KC_RCBR,XXXXXXX,XXXXXXX,XXXXXXX,  \
-    _______,S(KC_2),S(KC_8),S(KC_4),S(KC_5),KC_GRV ,            XXXXXXX,S(KC_9),S(KC_0),XXXXXXX,S(KC_SCLN),S(KC_QUOT),  \
-    _______,XXXXXXX,XXXXXXX,S(KC_7),S(KC_3),S(KC_1),            XXXXXXX,KC_LBRC,KC_RBRC,KC_UP ,KC_RIGHT,_______,  \
-                    KC_PMNS,KC_PPLS,                                            KC_LEFT,KC_DOWN,                   \
+    _______,S(KC_2),S(KC_8),S(KC_4),S(KC_5),KC_GRV ,            XXXXXXX,S(KC_9),S(KC_0),XXXXXXX,XXXXXXX,XXXXXXX,  \
+    _______,XXXXXXX,XXXXXXX,S(KC_7),S(KC_3),S(KC_1),            XXXXXXX,KC_LBRC,KC_RBRC,XXXXXXX,XXXXXXX,_______,  \
+                    XXXXXXX,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
                                     _______,_______,            _______,KC_CAPS,                                   \
                                     _______,_______,            XXXXXXX,_______,                                   \
                                     _______,_______,            _______,_______                                    \
