@@ -5,6 +5,7 @@ extern keymap_config_t keymap_config;
 // Layers
 enum {
     LAYER_QWERTY = 0,
+    LAYER_QWERTY2,
     LAYER_ADJUST,
     LAYER_LOWER,
     LAYER_RAISE,
@@ -25,6 +26,7 @@ enum {
 
 // Layer switches
 #define QWERTY DF(LAYER_QWERTY)
+#define QWERTY2 DF(LAYER_QWERTY2)
 #define LOWER MO(LAYER_LOWER)
 #define RAISE OSL(LAYER_RAISE)
 #define FN MO(LAYER_FN)
@@ -43,13 +45,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |SHIFT |   z  |   x  |   c  |   v  |   b  |                  |   n  |   m  |   ,  |   .  |   /  |SHIFT |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
- *               |   -  |   =  |                                              | RAISE|   \  |
+ *               |   -  |   =  |                                              | CTRL |   \  |
  *               +-------------+-------------+                  +-------------+-------------+
  *                             |ETNER |SPACE |                  | BCSP | TAB  |
  *                             |------+------|                  |------+------|
- *                             | CTRL |LOWER |                  |LOWER | ALT  |
+ *                             | CTRL |LOWER |                  |LOWER | GUI  |
  *                             |------+------|                  |------+------|
- *                             |LOWER | ALT  |                  | FN   | GUI  |
+ *                             |LOWER | ALT  |                  | FN   | ALT  |
  *                             +-------------+                  +-------------+
  */
 
@@ -59,8 +61,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LSFT,  KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,               KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_RSFT,   \
                      KC_MINUS,KC_EQL,                                            KC_RCTL,KC_BSLS,                 \
                                     KC_ENT , KC_SPC ,            KC_BSPC,  KC_TAB ,                                \
-                                    KC_LCTL,  LOWER ,             LOWER ,  KC_RALT,                                \
-                                      LOWER, KC_LALT,              FN   ,  KC_RGUI                                 \
+                                    KC_LCTL,  LOWER ,             LOWER ,  KC_RGUI,                                \
+                                      LOWER, KC_LALT,              FN   ,  KC_RALT                                 \
+),
+
+/* Base (qwerty)
+ * Space and Backspace swapped 
+ */
+
+[LAYER_QWERTY2] = LAYOUT(
+     RAISE ,  KC_Q,  KC_W,   KC_E,   KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_DEL,   \
+    AD_ESC ,  KC_A,  KC_S,   KC_D,   KC_F,   KC_G,               KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,  \
+    KC_LSFT,  KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,               KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_RSFT,   \
+                     KC_MINUS,KC_EQL,                                            KC_RCTL,KC_BSLS,                 \
+                                    KC_ENT ,KC_BSPC ,            KC_SPC ,  KC_TAB ,                                \
+                                    KC_LCTL,  LOWER ,             LOWER ,  KC_RGUI,                                \
+                                      LOWER, KC_LALT,              FN   ,  KC_RALT                                 \
 ),
 
 /* Base (lower)
@@ -93,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |  &   |  #   |  !   |                  |      |  [   |  ]   |  up  | right|      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
  *               |  -   |  +   |                                              | left | down |
- *               +-------------+                                              +-------------+
+ *               +-------------+                                             +-------------+
  */
 [LAYER_RAISE] = LAYOUT(
     _______,XXXXXXX,XXXXXXX,S(KC_1),S(KC_6),S(KC_GRV),          XXXXXXX,KC_LCBR,KC_RCBR,XXXXXXX,XXXXXXX,XXXXXXX,  \
@@ -111,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |  !   |  @   |  #   |  $   |  %   |                  | MUTE | VOL- | VOL+ | PLAY |      | f12  |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |  ^   |  &   |  *   |  (   |  )   |                  |      | BRI- | BRI+ |      |      |      |
+ * |      |  ^   |  &   |  *   |  (   |  )   |                  |      | BRI- | BRI+ |      |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
  *               |      |      |                                              | PREV | NEXT |
  *               +-------------+                                              +-------------+
@@ -131,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,_______,_______,_______,_______,_______,            _______,_______,_______,_______,_______,KC_CRST,   \
     _______,_______,_______,_______,_______,_______,            _______,_______,_______,_______,_______,KC_CRST,   \
     _______,_______,_______,_______,_______,_______,            _______,_______,_______,_______,_______,KC_CRST,   \
-                    _______,_______,                                            _______,_______,                   \
+                    _______,_______,                                            QWERTY ,QWERTY2,                   \
                                     _______,_______,            _______,_______,                                   \
                                     _______,XXXXXXX,            XXXXXXX,_______,                                   \
                                     _______,_______,            _______,_______                                    \
