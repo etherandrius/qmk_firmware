@@ -49,9 +49,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               +-------------+-------------+                  +-------------+-------------+
  *                             |ETNER |SPACE |                  | BCSP | TAB  |
  *                             |------+------|                  |------+------|
- *                             | CTRL |LOWER |                  |LOWER | GUI  |
+ *                             | CTRL |LOWER |                  |RAISE | GUI  |
  *                             |------+------|                  |------+------|
- *                             |LOWER | ALT  |                  | FN   | ALT  |
+ *                             |LOWER | GUI  |                  | FN   | ALT  |
  *                             +-------------+                  +-------------+
  */
 
@@ -61,8 +61,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LSFT,  KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,               KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_RSFT,   \
                      KC_MINUS,KC_EQL,                                            KC_RCTL,KC_BSLS,                 \
                                     KC_ENT , KC_SPC ,            KC_BSPC,  KC_TAB ,                                \
-                                    KC_LCTL,  LOWER ,             LOWER ,  KC_RGUI,                                \
-                                      LOWER, KC_LALT,              FN   ,  KC_RALT                                 \
+                                    KC_LCTL,  LOWER ,             RAISE ,  KC_RGUI,                                \
+                                      LOWER, KC_LGUI,              FN   ,  KC_RALT                                 \
 ),
 
 /* Base (qwerty)
@@ -73,10 +73,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      RAISE ,  KC_Q,  KC_W,   KC_E,   KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_DEL,   \
     AD_ESC ,  KC_A,  KC_S,   KC_D,   KC_F,   KC_G,               KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,  \
     KC_LSFT,  KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,               KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_RSFT,   \
-                     KC_MINUS,KC_EQL,                                            KC_RCTL,KC_BSLS,                 \
-                                    KC_ENT ,KC_BSPC ,            KC_SPC ,  KC_TAB ,                                \
-                                    KC_LCTL,  LOWER ,             LOWER ,  KC_RGUI,                                \
-                                      LOWER, KC_LALT,              FN   ,  KC_RALT                                 \
+                     KC_MINUS,KC_EQL,                                            RAISE ,KC_BSLS,                 \
+                                    KC_ENT , KC_SPC ,            KC_BSPC,  KC_TAB ,                                \
+                                    KC_LCTL,  LOWER ,             RAISE ,  KC_RGUI,                                \
+                                      LOWER, KC_LGUI,              FN   ,  KC_RALT                                 \
 ),
 
 /* Base (lower)
