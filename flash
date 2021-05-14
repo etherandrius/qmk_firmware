@@ -7,8 +7,18 @@ fi
 
 OPTIND=1 # Reset getopts
 
+# For future reference
+# Run watch -n 0.1 'ls /dev | grep usbmodem; echo '-----------'; ls /dev'
+# reset keyb make sure below matches
+
+# Order:
+# Run script flash 
+# Reset keyboard
+# Ensure it's in /dev/.., be fast it will dissapear 
+# Press enter on the blocked flash script (use laptop keyboard as the other one is not working)
+
 # SERIAL_PORT=/dev/ttyACM0
-SERIAL_PORT=/dev/tty.usbmodem14101
+SERIAL_PORT=/dev/tty.usbmodem14201
 LAYOUT=andrius
 REFLASH_EEPROM=false
 hands=()
