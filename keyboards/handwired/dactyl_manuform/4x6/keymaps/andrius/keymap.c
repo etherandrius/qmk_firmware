@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |      |      |  !   |  ^   |  ~   |                  |      |  [   |  ]   |  +   |   =  | CAPS |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |  @   |  *   |  $   |  %   |  `   |                  |      |  (   |  )   |  -   |      |      |
+ * |      |  @   |  *   |  $   |  %   |  `   |                  |      |  (   |  )   |  -   |   :  |  "   |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |      |      |  &   |  #   |      |                  |      |  {   |  }   |  _   |      |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [LAYER_RAISE] = LAYOUT(
     _______,XXXXXXX,XXXXXXX,S(KC_1),S(KC_6),S(KC_GRV),          XXXXXXX,KC_LBRC,KC_RBRC,S(KC_EQL),KC_EQL,KC_CAPS,  \
-    _______,S(KC_2),S(KC_8),S(KC_4),S(KC_5),KC_GRV ,            XXXXXXX,S(KC_9),S(KC_0),KC_MINUS,XXXXXXX,XXXXXXX,  \
+    _______,S(KC_2),S(KC_8),S(KC_4),S(KC_5),KC_GRV ,            XXXXXXX,S(KC_9),S(KC_0),KC_MINUS,S(KC_SCLN),S(KC_QUOT),  \
     _______,XXXXXXX,XXXXXXX,S(KC_7),S(KC_3),XXXXXXX,            XXXXXXX,KC_LCBR,KC_RCBR,S(KC_MINUS),XXXXXXX,_______,  \
                     XXXXXXX,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
                                     _______,_______,            _______,XXXXXXX,                                   \
