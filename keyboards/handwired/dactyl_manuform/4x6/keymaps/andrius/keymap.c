@@ -30,46 +30,46 @@ enum {
 #define NEW_LOWER MO(NEW_LAYER_LOWER)
 #define RAISE OSL(LAYER_RAISE)
 #define FN MO(LAYER_FN)
+#define SHIFT OSM(MOD_LSFT)
 
 
 // Switch to function layer when held, escape when tapped
 #define AD_ESC LT(LAYER_ADJUST, KC_ESCAPE)
 
-#define R_TAB LT(LAYER_RAISE, KC_TAB)
+/* #define R_L OSL(LAYER_RAISE, MO(NEW_LAYER_LOWER)) */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Base (qwerty)
  * +-----------------------------------------+                  +-----------------------------------------+
- * |RAISE |   q  |   w  |   e  |   r  |   t  |                  |   y  |   u  |   i  |   o  |   p  | DEL  |
+ * |      |   q  |   w  |   e  |   r  |   t  |                  |   y  |   u  |   i  |   o  |   p  |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * | ESC  |   a  |   s  |   d  |   f  |   g  |                  |   h  |   j  |   k  |   l  |   ;  |  '   |
+ * | ESC  |   a  |   s  |   d  |   f  |   g  |                  |   h  |   j  |   k  |   l  |   ;  | ENTR |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |SHIFT |   z  |   x  |   c  |   v  |   b  |                  |   n  |   m  |   ,  |   .  |   /  |SHIFT |
+ * |      |   z  |   x  |   c  |   v  |   b  |                  |   n  |   m  |   ,  |   .  |   /  |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
  *               | Lower| ALT  |                                              |      |   \  |
  *               +-------------+-------------+                  +-------------+-------------+
- *                             |ETNER |SPACE |                  | BCSP | Raise/TAB  |
+ *                             |SHIFT |SPACE |                  | BCSP |Raise |
  *                             |------+------|                  |------+------|
- *                             | CTRL |LOWER |                  |RAISE | GUI  |
+ *                             | CTRL |      |                  |      | GUI  |
  *                             |------+------|                  |------+------|
- *                             |LOWER | GUI  |                  | FN   | ALT  |
+ *                             |      |      |                  | FN   |      |
  *                             +-------------+                  +-------------+
  */
-
 [LAYER_QWERTY] = LAYOUT(
      RAISE ,  KC_Q,  KC_W,   KC_E,   KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_DEL,   \
-    AD_ESC ,  KC_A,  KC_S,   KC_D,   KC_F,   KC_G,               KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,  \
+    AD_ESC ,  KC_A,  KC_S,   KC_D,   KC_F,   KC_G,               KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_ENT,  \
     KC_LSFT,  KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,               KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_RSFT,   \
                 NEW_LOWER,KC_LALT,                                            KC_RCTL,KC_BSLS,                 \
-                                    KC_ENT , KC_SPC ,            KC_BSPC,  R_TAB ,                                \
-                                    KC_LCTL,  LOWER ,             RAISE ,  KC_RGUI,                                \
-                                      LOWER, KC_LGUI,              FN   ,  KC_RALT                                 \
+                                      SHIFT, KC_SPC,            KC_BSPC,  RAISE ,                                \
+                                    KC_LCTL,XXXXXXX,            XXXXXXX,  KC_RGUI,                                \
+                                      LOWER,XXXXXXX,              FN   ,  KC_RALT                                 \
 ),
 
 /* Base (new lower)
  * +-----------------------------------------+                  +-----------------------------------------+
- * |      |      |      |      |      |      |                  |      |  [   |  ]   |      |      |      |
+ * |      |      |      |      |      |      |                  |      |CMD+[ |CMD+] |      |      |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |      |      |      |      |      |                  | left | down | up   | right|      |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
@@ -79,10 +79,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               +-------------+                                              +-------------+
  */
 [NEW_LAYER_LOWER] = LAYOUT(
-    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            XXXXXXX,KC_LBRC,KC_RBRC,XXXXXXX,XXXXXXX,_______,  \
+    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            XXXXXXX,G(KC_LBRC),G(KC_RBRC),XXXXXXX,XXXXXXX,_______,  \
     _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            KC_LEFT,KC_DOWN, KC_UP ,KC_RIGHT,XXXXXXX,_______, \
     _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,_______,  \
-                    XXXXXXX,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
+                    _______,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
                                     _______,_______,            _______,_______,                                   \
                                     _______,XXXXXXX,            _______,_______,                                   \
                                     _______,_______,            _______,_______                                    \
@@ -90,28 +90,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Base (new raise)
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |      |      |  !   |  ^   |  ~   |                  |      |  [   |  ]   |  +   |   =  | CAPS |
+ * |      |      |      |  !   |  ^   |  ~   |                  |  "   |  [   |  ]   |  +   |   =  |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |  @   |  *   |  $   |  %   |  `   |                  |      |  (   |  )   |  -   |   :  |  "   |
+ * | TAB  |  @   |  *   |  $   |  %   |  `   |                  |  '   |  (   |  )   |  -   |   :  | TAB  |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |      |      |  &   |  #   |      |                  |      |  {   |  }   |  _   |      |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
- *               |      |      |                                              |      |      |
- *               +-------------+                                              +-------------+
+ *               |      |      |                                              |  <   |  >   |
+ *               +-------------+-------------+                  +-------------+-------------+
+ *                             |      |      |                  |      |Lower |
+ *                             +------+------+                  +------+------+
  */
 [LAYER_RAISE] = LAYOUT(
-    _______,XXXXXXX,XXXXXXX,S(KC_1),S(KC_6),S(KC_GRV),          XXXXXXX,KC_LBRC,KC_RBRC,S(KC_EQL),KC_EQL,KC_CAPS,  \
-    _______,S(KC_2),S(KC_8),S(KC_4),S(KC_5),KC_GRV ,            XXXXXXX,S(KC_9),S(KC_0),KC_MINUS,S(KC_SCLN),S(KC_QUOT),  \
+    _______,XXXXXXX,XXXXXXX,S(KC_1),S(KC_6),S(KC_GRV),          S(KC_QUOT),KC_LBRC,KC_RBRC,S(KC_EQL),KC_EQL,KC_CAPS,  \
+    KC_TAB,S(KC_2),S(KC_8),S(KC_4),S(KC_5),KC_GRV ,            KC_QUOT,S(KC_9),S(KC_0),KC_MINUS,S(KC_SCLN),KC_TAB,  \
     _______,XXXXXXX,XXXXXXX,S(KC_7),S(KC_3),XXXXXXX,            XXXXXXX,KC_LCBR,KC_RCBR,S(KC_MINUS),XXXXXXX,_______,  \
-                    XXXXXXX,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
-                                    _______,_______,            _______,XXXXXXX,                                   \
+                    XXXXXXX,XXXXXXX,                                            S(KC_COMM),S(KC_DOT),                   \
+                                    _______,_______,            _______,NEW_LOWER,                                   \
                                     _______,_______,            XXXXXXX,_______,                                   \
                                     _______,_______,            _______,_______                                    \
 ),
 
 /* Base (lower)
  * +-----------------------------------------+                  +-----------------------------------------+
- * |      |      |      |      |      |      |                  |      |  [   |  ]   |      |      |      |
+ * |      |      |      |      |      |      |                  |      |CMD+[ |CMD+] |      |      |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |   1  |   2  |   3  |   4  |   5  |                  | left | down | up   | right|      |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
@@ -121,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               +-------------+                                              +-------------+
  */
 [LAYER_LOWER] = LAYOUT(
-    _______,_______,_______,_______,_______,_______,            _______,KC_LBRC,KC_RBRC,_______,_______,_______,  \
+    _______,_______,_______,_______,_______,_______,            _______,G(KC_LBRC),G(KC_RBRC),_______,_______,_______,  \
     _______,   KC_1,   KC_2,   KC_3,   KC_4,   KC_5,            KC_LEFT,KC_DOWN, KC_UP ,KC_RIGHT,_______,_______, \
     _______,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,            _______,_______,_______,_______,_______,_______,  \
                     XXXXXXX,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
@@ -149,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     XXXXXXX,XXXXXXX,                                            KC_MPRV,KC_MNXT,                   \
                                     _______,_______,            _______,_______,                                   \
                                     _______,_______,            _______,_______,                                   \
-                                    _______,_______,            XXXXXXX,_______                                    \
+                                    _______,_______,            _______,_______                                    \
 ),
 
 
@@ -160,10 +162,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,_______,_______,_______,_______,_______,            _______,KC_7,KC_8,KC_9,_______,KC_CRST,   \
     _______,_______,_______,_______,_______,_______,            _______,KC_4,KC_5,KC_6,_______,KC_CRST,   \
     _______,_______,_______,_______,_______,_______,            _______,KC_1,KC_2,KC_3,_______,KC_CRST,   \
-                    _______,_______,                                            KC_0,_______,                   \
-                                    _______,_______,            _______,_______,                                   \
-                                    _______,XXXXXXX,            XXXXXXX,_______,                                   \
-                                    _______,_______,            _______,_______                                    \
+                    _______,_______,                                         KC_0,_______,                \
+                                    _______,_______,            _______,_______,                          \
+                                    _______,XXXXXXX,            XXXXXXX,_______,                          \
+                                    _______,_______,            _______,_______                           \
 )
 };
 
