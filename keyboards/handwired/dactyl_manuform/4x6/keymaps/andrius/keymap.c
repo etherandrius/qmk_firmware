@@ -32,6 +32,19 @@ enum {
 #define FN MO(LAYER_FN)
 #define SHIFT OSM(MOD_LSFT)
 
+// // Left-hand home row mods
+#define HOME_A LALT_T(KC_A)
+#define HOME_S LCTL_T(KC_S)
+#define HOME_D LSFT_T(KC_D)
+#define HOME_F CMD_T(KC_F)
+
+// Right-hand home row mods
+#define HOME_J CMD_T(KC_J)
+#define HOME_K RSFT_T(KC_K)
+#define HOME_L RCTL_T(KC_L)
+#define HOME_SCLN LALT_T(KC_SCLN)
+
+
 
 // Switch to function layer when held, escape when tapped
 #define AD_ESC LT(LAYER_ADJUST, KC_ESCAPE)
@@ -44,11 +57,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * +-----------------------------------------+                  +-----------------------------------------+
  * |      |   q  |   w  |   e  |   r  |   t  |                  |   y  |   u  |   i  |   o  |   p  |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * | ESC  |   a  |   s  |   d  |   f  |   g  |                  |   h  |   j  |   k  |   l  |   ;  | ENTR |
+ * | ESC  |a|ATL |s|CLT |d|SFT |f|CMD |   g  |                  |   h  |j|CMD |k|SFT |l|CLT |;|ATL | ENTR |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |   z  |   x  |   c  |   v  |   b  |                  |   n  |   m  |   ,  |   .  |   /  |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
- *               | Lower| ALT  |                                              |      |   \  |
+ *               | Lower| ALT  |                                              |      |      |
  *               +-------------+-------------+                  +-------------+-------------+
  *                             |SHIFT |SPACE |                  | BCSP |Raise |
  *                             |------+------|                  |------+------|
@@ -58,10 +71,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                             +-------------+                  +-------------+
  */
 [LAYER_QWERTY] = LAYOUT(
-     RAISE ,  KC_Q,  KC_W,   KC_E,   KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_DEL,   \
-    AD_ESC ,  KC_A,  KC_S,   KC_D,   KC_F,   KC_G,               KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_ENT,  \
-    KC_LSFT,  KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,               KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_RSFT,   \
-                NEW_LOWER,KC_LALT,                                            KC_RCTL,KC_BSLS,                 \
+     RAISE ,  KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_DEL,   \
+    AD_ESC ,HOME_A,HOME_S,HOME_D,HOME_F,   KC_G,               KC_H, HOME_J, HOME_K, HOME_L,HOME_SCLN, KC_ENT,  \
+    KC_LSFT,  KC_Z,  KC_X,  KC_C,  KC_V,   KC_B,               KC_N,   KC_M,KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,   \
+                NEW_LOWER,KC_LALT,                                          KC_RCTL,KC_BSLS,                 \
                                       SHIFT, KC_SPC,            KC_BSPC,  RAISE ,                                \
                                     KC_LCTL,XXXXXXX,            XXXXXXX,  KC_RGUI,                                \
                                       LOWER,XXXXXXX,              FN   ,  KC_RALT                                 \
@@ -82,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            XXXXXXX,G(KC_LBRC),G(KC_RBRC),XXXXXXX,XXXXXXX,_______,  \
     _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            KC_LEFT,KC_DOWN, KC_UP ,KC_RIGHT,XXXXXXX,_______, \
     _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,_______,  \
-                    _______,XXXXXXX,                                            XXXXXXX,XXXXXXX,                   \
+                    _______,_______,                                            XXXXXXX,XXXXXXX,                   \
                                     _______,_______,            _______,_______,                                   \
                                     _______,XXXXXXX,            _______,_______,                                   \
                                     _______,_______,            _______,_______                                    \
@@ -94,17 +107,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * | TAB  |  @   |  *   |  $   |  %   |  `   |                  |  '   |  (   |  )   |  -   |   :  | TAB  |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |      |      |  &   |  #   |      |                  |      |  {   |  }   |  _   |      |      |
+ * |      |      |      |  &   |  #   |      |                  |  |   |  {   |  }   |  _   |   \  |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
- *               |      |      |                                              |  <   |  >   |
+ *               |      |      |                                              |      |      |
  *               +-------------+-------------+                  +-------------+-------------+
  *                             |      |      |                  |      |Lower |
  *                             +------+------+                  +------+------+
  */
 [LAYER_RAISE] = LAYOUT(
-    _______,XXXXXXX,XXXXXXX,S(KC_1),S(KC_6),S(KC_GRV),          S(KC_QUOT),KC_LBRC,KC_RBRC,S(KC_EQL),KC_EQL,KC_CAPS,  \
+    _______,XXXXXXX,XXXXXXX,S(KC_1),S(KC_6),S(KC_GRV),         S(KC_QUOT),KC_LBRC,KC_RBRC,S(KC_EQL),KC_EQL,KC_CAPS,  \
     KC_TAB,S(KC_2),S(KC_8),S(KC_4),S(KC_5),KC_GRV ,            KC_QUOT,S(KC_9),S(KC_0),KC_MINUS,S(KC_SCLN),KC_TAB,  \
-    _______,XXXXXXX,XXXXXXX,S(KC_7),S(KC_3),XXXXXXX,            XXXXXXX,KC_LCBR,KC_RCBR,S(KC_MINUS),XXXXXXX,_______,  \
+    _______,XXXXXXX,XXXXXXX,S(KC_7),S(KC_3),XXXXXXX,           S(KC_BSLS),KC_LCBR,KC_RCBR,S(KC_MINUS),XXXXXXX,_______,  \
                     XXXXXXX,XXXXXXX,                                            S(KC_COMM),S(KC_DOT),                   \
                                     _______,_______,            _______,NEW_LOWER,                                   \
                                     _______,_______,            XXXXXXX,_______,                                   \
@@ -182,4 +195,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         reset_keyboard();
     }
     return true;
+}
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LALT_T(KC_A):
+            return TAPPING_TERM + 150;
+        case LALT_T(KC_SCLN):
+            return TAPPING_TERM + 150;
+        default:
+            return TAPPING_TERM;
+    }
 }

@@ -18,7 +18,7 @@ OPTIND=1 # Reset getopts
 # Press enter on the blocked flash script (use laptop keyboard as the other one is not working)
 
 # SERIAL_PORT=/dev/ttyACM0
-SERIAL_PORT=/dev/tty.usbmodem14201
+SERIAL_PORT=/dev/tty.usbmodem1421101
 LAYOUT=andrius
 REFLASH_EEPROM=false
 hands=()
