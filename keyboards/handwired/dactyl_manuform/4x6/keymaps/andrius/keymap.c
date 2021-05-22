@@ -42,8 +42,6 @@ enum {
 #define HOME_L RCTL_T(KC_L)
 #define HOME_SCLN LALT_T(KC_SCLN)
 
-
-
 // Switch to function layer when held, escape when tapped
 #define AD_ESC LT(LAYER_ADJUST, KC_ESCAPE)
 
@@ -58,13 +56,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |   z  |   x  |   c  |   v  |   b  |                  |   n  |   m  |   ,  |   .  |   /  |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
  *               | NAV  | ALT  |                                              |      |      |
- *               +-------------+-------------+                  +-------------+-------------+
- *                             |SHIFT |SPACE |                  | BCSP |SYM   |
- *                             |------+------|                  |------+------|
- *                             | CTRL |      |                  |      | GUI  |
- *                             |------+------|                  |------+------|
- *                             |      |      |                  | FN   |      |
- *                             +-------------+                  +-------------+
+ *               +-------------+--------------------+    +--------------------+-------------+
+ *                             |SHIFT |SPACE | CTRL |    | BCSP | SYM  | CMD  |
+ *                             +--------------------+    +--------------------+
  */
 [LAYER_QWERTY] = LAYOUT(
     XXXXXXX,  KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_DEL,   \
@@ -106,9 +100,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |  &   |  #   |      |                  |  |   |  {   |  }   |  _   |   \  |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
  *               |      |      |                                              |      |      |
- *               +-------------+-------------+                  +-------------+-------------+
- *                             |      |      |                  |      |NAV   |
- *                             +------+------+                  +------+------+
+ *               +-------------+--------------------+    +--------------------+-------------+
+ *                             |      |      |      |    |      |      |  NAV |
+ *                             +--------------------+    +--------------------+
  */
 [LAYER_SYMBOLS] = LAYOUT(
     _______,XXXXXXX,XXXXXXX,S(KC_1),S(KC_6),S(KC_GRV),         S(KC_QUOT),KC_LBRC,KC_RBRC,S(KC_EQL),KC_EQL,KC_CAPS,  \
