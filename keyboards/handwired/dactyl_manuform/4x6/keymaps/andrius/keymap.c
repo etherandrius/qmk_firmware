@@ -6,6 +6,7 @@ extern keymap_config_t keymap_config;
 enum {
     LAYER_QWERTY = 0,
     LAYER_ADJUST,
+    LAYER_NUMBER,
     LAYER_NAV,
     LAYER_SYMBOLS,
     LAYER_FN,
@@ -31,16 +32,18 @@ enum {
 #define SHIFT OSM(MOD_LSFT)
 
 // // Left-hand home row mods
-#define HOME_A LALT_T(KC_A)
-#define HOME_S LCTL_T(KC_S)
-#define HOME_D LSFT_T(KC_D)
+/* #define HOME_A LALT_T(KC_A) */
+#define HOME_S LALT_T(KC_S)
+#define HOME_D LCTL_T(KC_D)
 #define HOME_F CMD_T(KC_F)
 
 // Right-hand home row mods
 #define HOME_J CMD_T(KC_J)
-#define HOME_K RSFT_T(KC_K)
-#define HOME_L RCTL_T(KC_L)
-#define HOME_SCLN LALT_T(KC_SCLN)
+#define HOME_K RCTL_T(KC_K)
+#define HOME_L RALT_T(KC_L)
+/* #define HOME_SCLN LALT_T(KC_SCLN) */
+
+#define NUM_Z LT(LAYER_NUMBER, KC_Z)
 
 // Switch to function layer when held, escape when tapped
 #define AD_ESC LT(LAYER_ADJUST, KC_ESCAPE)
@@ -51,22 +54,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * +-----------------------------------------+                  +-----------------------------------------+
  * |      |   q  |   w  |   e  |   r  |   t  |                  |   y  |   u  |   i  |   o  |   p  |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * | ESC  |a|ATL |s|CLT |d|SFT |f|CMD |   g  |                  |   h  |j|CMD |k|SFT |l|CLT |;|ATL | ENTR |
+ * |Num   |a|ATL |s|CLT |d|SFT |f|CMD |   g  |                  |   h  |j|CMD |k|SFT |l|CLT |;|ATL | ENTR |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |   z  |   x  |   c  |   v  |   b  |                  |   n  |   m  |   ,  |   .  |   /  |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
- *               | NAV  | ALT  |                                              |      |      |
+ *               | NAV  | ALT  |                                              |      |   \  |
  *               +-------------+--------------------+    +--------------------+-------------+
  *                             |SHIFT |SPACE | CTRL |    | BCSP | SYM  | CMD  |
  *                             +--------------------+    +--------------------+
  */
 [LAYER_QWERTY] = LAYOUT(
-    XXXXXXX,  KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_DEL,   \
-    AD_ESC ,HOME_A,HOME_S,HOME_D,HOME_F,   KC_G,               KC_H, HOME_J, HOME_K, HOME_L,HOME_SCLN, KC_ENT,  \
-    KC_LSFT,  KC_Z,  KC_X,  KC_C,  KC_V,   KC_B,               KC_N,   KC_M,KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,   \
+    XXXXXXX,  KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,    KC_P,XXXXXXX,   \
+    AD_ESC ,  KC_A,HOME_S,HOME_D,HOME_F,   KC_G,               KC_H, HOME_J, HOME_K, HOME_L, KC_SCLN, KC_ENT,  \
+    XXXXXXX, NUM_Z,  KC_X,  KC_C,  KC_V,   KC_B,               KC_N,   KC_M,KC_COMM, KC_DOT, KC_SLSH,XXXXXXX,   \
                      NAV ,KC_LALT,                                          KC_RCTL,KC_BSLS,                 \
                                       SHIFT, KC_SPC,            KC_BSPC,   SYM  ,                                \
-                                    KC_LCTL,XXXXXXX,            XXXXXXX,  KC_RGUI,                                \
+                             OSL(LAYER_NAV),XXXXXXX,            XXXXXXX,OSL(LAYER_NUMBER),                   \
                                     XXXXXXX,XXXXXXX,              FN   ,  KC_RALT                                 \
 ),
 
@@ -76,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |      |      |      |      |      |                  | left | down | up   | right|      |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                  |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |                  | pgdw | whup | whdw | pgup |      |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
  *               |      |      |                                              |      |      |
  *               +-------------+                                              +-------------+
@@ -84,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAYER_NAV] = LAYOUT(
     _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            XXXXXXX,G(KC_LBRC),G(KC_RBRC),XXXXXXX,XXXXXXX,_______,  \
     _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            KC_LEFT,KC_DOWN, KC_UP ,KC_RIGHT,XXXXXXX,_______, \
-    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,_______,  \
+    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            KC_PGDOWN,KC_WH_U,KC_WH_D,KC_PGUP,XXXXXXX,_______,  \
                     _______,_______,                                            XXXXXXX,XXXXXXX,                   \
                                     _______,_______,            _______,_______,                                   \
                                     _______,XXXXXXX,            _______,_______,                                   \
@@ -135,15 +138,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     _______,_______,            _______,_______                                    \
 ),
 
+/* Base (esc)
+   Number layer and reset
+ */
+[LAYER_NUMBER] = LAYOUT(
+    _______,_______,_______,_______,_______,_______,            _______,KC_7,KC_8,KC_9,_______,_______,   \
+    _______,_______,_______,_______,_______,_______,            _______,KC_4,KC_5,KC_6,_______,_______,   \
+    _______,_______,_______,_______,_______,_______,            _______,KC_1,KC_2,KC_3,_______,_______,   \
+                    _______,_______,                                         KC_0,_______,                \
+                                    _______,_______,            _______,_______,                          \
+                                    _______,XXXXXXX,            XXXXXXX,_______,                          \
+                                    _______,_______,            _______,_______                           \
+),
+
 
 /* Base (esc)
    Number layer and reset
  */
 [LAYER_ADJUST] = LAYOUT(
-    _______,_______,_______,_______,_______,_______,            _______,KC_7,KC_8,KC_9,_______,KC_CRST,   \
-    _______,_______,_______,_______,_______,_______,            _______,KC_4,KC_5,KC_6,_______,KC_CRST,   \
-    _______,_______,_______,_______,_______,_______,            _______,KC_1,KC_2,KC_3,_______,KC_CRST,   \
-                    _______,_______,                                         KC_0,_______,                \
+    _______,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
+    _______,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
+    _______,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
+                    _______,_______,                                         XXXXXXX,_______,                \
                                     _______,_______,            _______,_______,                          \
                                     _______,XXXXXXX,            XXXXXXX,_______,                          \
                                     _______,_______,            _______,_______                           \
@@ -167,10 +183,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LALT_T(KC_A):
-            return TAPPING_TERM + 150;
-        case LALT_T(KC_SCLN):
-            return TAPPING_TERM + 150;
+        /* case LALT_T(KC_A): */
+        /*     return TAPPING_TERM + 150; */
+        /* case LALT_T(KC_SCLN): */
+        /*     return TAPPING_TERM + 150; */
         default:
             return TAPPING_TERM;
     }

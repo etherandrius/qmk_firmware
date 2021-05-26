@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // 
 // Configure the global tapping term (default: 200ms)
-#define TAPPING_TERM 220
+#define TAPPING_TERM 170
 #define TAPPING_TERM_PER_KEY
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
@@ -41,6 +41,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_FORCE_HOLD
 
 // Apply the modifier on keys that are tapped during a short hold of a modtap
-// #define PERMISSIVE_HOLD
+#define PERMISSIVE_HOLD
 
 
