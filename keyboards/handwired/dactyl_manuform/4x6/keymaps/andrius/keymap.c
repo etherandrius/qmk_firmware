@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
  *               | NAV  | ALT  |                                              |      |   \  |
  *               +-------------+--------------------+    +--------------------+-------------+
- *                             |SHIFT |SPACE | CTRL |    | BCSP | SYM  | CMD  |
+ *                             |SHIFT |SPACE | NAV  |    | NUM  | BCSP | SYM  |
  *                             +--------------------+    +--------------------+
  */
 [LAYER_QWERTY] = LAYOUT(
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [LAYER_NAV] = LAYOUT(
     _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            XXXXXXX,G(KC_LBRC),G(KC_RBRC),XXXXXXX,XXXXXXX,_______,  \
-    _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            KC_LEFT,KC_DOWN, KC_UP ,KC_RIGHT,XXXXXXX,_______, \
+    _______,XXXXXXX,KC_LALT,KC_LCTL,KC_LCMD,XXXXXXX,            KC_LEFT,KC_DOWN, KC_UP ,KC_RIGHT,XXXXXXX,_______, \
     _______,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,            KC_PGDOWN,KC_WH_U,KC_WH_D,KC_PGUP,XXXXXXX,_______,  \
                     _______,_______,                                            XXXXXXX,XXXXXXX,                   \
                                     _______,_______,            _______,_______,                                   \
@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |      |      |  !   |  ^   |  ~   |                  |  "   |  [   |  ]   |  +   |   =  |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * | TAB  |  @   |  *   |  $   |  %   |  `   |                  |  '   |  (   |  )   |  -   |   :  | TAB  |
+ * |      |  @   |  *   |  $   |  %   |  `   |                  |  '   |  (   |  )   |  -   |   :  | TAB  |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |      |      |  &   |  #   |      |                  |  |   |  {   |  }   |  _   |   \  |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [LAYER_SYMBOLS] = LAYOUT(
     _______,XXXXXXX,XXXXXXX,S(KC_1),S(KC_6),S(KC_GRV),         S(KC_QUOT),KC_LBRC,KC_RBRC,S(KC_EQL),KC_EQL,KC_CAPS,  \
-    KC_TAB,S(KC_2),S(KC_8),S(KC_4),S(KC_5),KC_GRV ,            KC_QUOT,S(KC_9),S(KC_0),KC_MINUS,S(KC_SCLN),KC_TAB,  \
+    XXXXXXX,S(KC_2),S(KC_8),S(KC_4),S(KC_5),KC_GRV ,            KC_QUOT,S(KC_9),S(KC_0),KC_MINUS,S(KC_SCLN),KC_TAB,  \
     _______,XXXXXXX,XXXXXXX,S(KC_7),S(KC_3),XXXXXXX,           S(KC_BSLS),KC_LCBR,KC_RCBR,S(KC_MINUS),XXXXXXX,_______,  \
                     XXXXXXX,XXXXXXX,                                            S(KC_COMM),S(KC_DOT),                   \
                                     _______,_______,            _______,NAV,                                   \
