@@ -41,8 +41,8 @@ enum {
 #define HOME_K RCTL_T(KC_K)
 #define HOME_L LALT_T(KC_L)
 
-#define NUM_Z LT(LAYER_NUMBER, KC_Z)
-#define NAC_A LT(LAYER_NAV, KC_A)
+#define NUM_V LT(LAYER_NUMBER, KC_V)
+#define NAV_A LT(LAYER_NAV, KC_A)
 
 // Switch to function layer when held, escape when tapped
 #define AD_ESC LT(LAYER_ADJUST, KC_ESCAPE)
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * | ESC  |a|NAV |s|ALT |d|CTL |f|CMD |   g  |                  |   h  |j|CMD |k|CTL |l|ALT |   ;  | ENTR |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |z|NUM |   x  |   c  |   v  |   b  |                  |   n  |   m  |      |      |      |      |
+ * |      |   z  |   x  |   c  |v|NUM |   b  |                  |   n  |   m  |      |      |      |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
  *               |      | ALT  |                                              |      |      |
  *               +-------------+--------------------+    +--------------------+-------------+
@@ -65,13 +65,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAYER_QWERTY] = LAYOUT(
     XXXXXXX,  KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,XXXXXXX,   \
     AD_ESC , NAV_A,HOME_S,HOME_D,HOME_F,   KC_G,               KC_H, HOME_J, HOME_K, HOME_L,KC_SCLN, KC_ENT,   \
-    XXXXXXX, NUM_Z,  KC_X,  KC_C,  KC_V,   KC_B,               KC_N,   KC_M,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \ // TEST remoe the pesky symbols on top layer
- /* XXXXXXX, NUM_Z,  KC_X,  KC_C,  KC_V,   KC_B,               KC_N,   KC_M,KC_COMM, KC_DOT,KC_SLSH,XXXXXXX,   \ */
+    XXXXXXX,  KC_Z ,  KC_X,  KC_C, NUM_V,   KC_B,               KC_N,   KC_M,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
                      NAV ,KC_LALT,                                          XXXXXXX,XXXXXXX,                   \
                                       SHIFT, KC_SPC,            KC_BSPC,   SYM  ,                              \
                              OSL(LAYER_NAV),XXXXXXX,            XXXXXXX,OSL(LAYER_NUMBER),                     \
                                     XXXXXXX,XXXXXXX,              FN   ,  KC_RALT                              \
 ),
+
+// can we make space and backspace be something else on hold ? How often do we actually hold space and backspace ?
+
 
 /* Fake SHIFT
  * +-----------------------------------------+                  +-----------------------------------------+
@@ -132,8 +134,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                             +--------------------+    +--------------------+
  */
 [LAYER_SYMBOLS] = LAYOUT(
-    _______,KC_SLSH,S(KC_SLSH),S(KC_1),  S(KC_6),S(KC_GRV),         S(KC_QUOT),KC_LBRC,KC_RBRC,  S(KC_EQL),   KC_EQL ,_______,  \
-    _______,S(KC_2),S(KC_8),   S(KC_4),  S(KC_5),  KC_GRV             KC_QUOT ,S(KC_9),S(KC_0),  KC_MINUS ,S(KC_SCLN),KC_TAB ,  \
+    _______,S(KC_SLSH),KC_SLSH,S(KC_1),  S(KC_6),S(KC_GRV),         S(KC_QUOT),KC_LBRC,KC_RBRC,  S(KC_EQL),   KC_EQL ,_______,  \
+    _______,S(KC_2),S(KC_8),   S(KC_4),  S(KC_5),  KC_GRV ,           KC_QUOT ,S(KC_9),S(KC_0),  KC_MINUS ,S(KC_SCLN),KC_TAB ,  \
     _______,XXXXXXX,S(KC_7),S(KC_COMM),S(KC_DOT),  S(KC_3),         S(KC_BSLS),KC_LCBR,KC_RCBR,S(KC_MINUS),  KC_BSLS ,_______,  \
                     XXXXXXX,XXXXXXX,                                            KC_TAB,XXXXXXX,                                 \
                                     KC_COMM, KC_DOT,            _______,NAV,                                                    \
