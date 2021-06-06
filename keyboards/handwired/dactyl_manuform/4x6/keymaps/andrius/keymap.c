@@ -6,7 +6,8 @@ extern keymap_config_t keymap_config;
 enum {
     LAYER_QWERTY = 0,
     LAYER_ADJUST,
-    LAYER_NUMBER,
+    LAYER_NUMBER_RIGHT,
+    LAYER_NUMBER_LEFT,
     LAYER_NAV,
     LAYER_SYMBOLS,
     LAYER_FN,
@@ -41,7 +42,8 @@ enum {
 #define HOME_K RCTL_T(KC_K)
 #define HOME_L LALT_T(KC_L)
 
-#define NUM_V LT(LAYER_NUMBER, KC_V)
+#define NUM_G LT(LAYER_NUMBER_RIGHT, KC_G)
+#define NUM_H LT(LAYER_NUMBER_LEFT, KC_H)
 #define NAV_A LT(LAYER_NAV, KC_A)
 
 // Switch to function layer when held, escape when tapped
@@ -53,23 +55,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * +-----------------------------------------+                  +-----------------------------------------+
  * |      |   q  |   w  |   e  |   r  |   t  |                  |   y  |   u  |   i  |   o  |   p  |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * | ESC  |a|NAV |s|ALT |d|CTL |f|CMD |   g  |                  |   h  |j|CMD |k|CTL |l|ALT |   ;  | ENTR |
+ * | ESC  |a|NAV |s|ALT |d|CTL |f|CMD |g|NUM |                  |h|NUM |j|CMD |k|CTL |l|ALT |   ;  | ENTR |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |   z  |   x  |   c  |v|NUM |   b  |                  |   n  |   m  |      |      |      |      |
+ * |      |   z  |   x  |   c  |   v  |   b  |                  |   n  |   m  |      |      |      |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
  *               |      | ALT  |                                              |      |      |
  *               +-------------+--------------------+    +--------------------+-------------+
- *                             |SHIFT |SPACE |      |    |      | BCSP | SYM  |
+ *                             | SYM  |SPACE | SHFT |    | SHFT | BCSP | SYM  |
  *                             +--------------------+    +--------------------+
  */
 [LAYER_QWERTY] = LAYOUT(
     XXXXXXX,  KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,XXXXXXX,   \
-    AD_ESC , NAV_A,HOME_S,HOME_D,HOME_F,   KC_G,               KC_H, HOME_J, HOME_K, HOME_L,KC_SCLN, KC_ENT,   \
-    XXXXXXX,  KC_Z ,  KC_X,  KC_C, NUM_V,   KC_B,               KC_N,   KC_M,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
+    AD_ESC , NAV_A,HOME_S,HOME_D,HOME_F,  NUM_G,              NUM_H, HOME_J, HOME_K, HOME_L,KC_SCLN, KC_ENT,   \
+    XXXXXXX,  KC_Z,  KC_X,  KC_C,  KC_V,   KC_B,               KC_N,   KC_M,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   \
                      NAV ,KC_LALT,                                          XXXXXXX,XXXXXXX,                   \
-                                      SHIFT, KC_SPC,            KC_BSPC,   SYM  ,                              \
-                             OSL(LAYER_NAV),XXXXXXX,            XXXXXXX,OSL(LAYER_NUMBER),                     \
-                                    XXXXXXX,XXXXXXX,              FN   ,  KC_RALT                              \
+                                      SYM  , KC_SPC,            KC_BSPC,  SYM  ,                              \
+                                      SHIFT,XXXXXXX,            XXXXXXX,  SHIFT,                     \
+                                    XXXXXXX,XXXXXXX,              FN   ,XXXXXXX                              \
 ),
 
 // can we make space and backspace be something else on hold ? How often do we actually hold space and backspace ?
@@ -165,9 +167,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 /* Base (esc)
-   Number layer and reset
+   Number layer
  */
-[LAYER_NUMBER] = LAYOUT(
+[LAYER_NUMBER_RIGHT] = LAYOUT(
     _______,_______,_______,_______,_______,_______,            _______,KC_7,KC_8,KC_9,_______,_______,   \
     _______,_______,_______,_______,_______,_______,            _______,KC_4,KC_5,KC_6,_______,_______,   \
     _______,_______,_______,_______,_______,_______,            _______,KC_1,KC_2,KC_3,_______,_______,   \
@@ -177,9 +179,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     _______,_______,            _______,_______                           \
 ),
 
+/* Base (esc)
+   Number layer
+ */
+[LAYER_NUMBER_LEFT] = LAYOUT(
+    _______,_______,_______,_______,_______,_______,            _______,_______,_______,_______,_______,_______,   \
+    _______,   KC_1,   KC_2,   KC_3,   KC_4,   KC_5,            _______,_______,_______,_______,_______,_______,   \
+    _______,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,            _______,_______,_______,_______,_______,_______,   \
+                    _______,_______,                                            _______,_______,                   \
+                           _______,_______,                     _______,_______,                                   \
+                           _______,XXXXXXX,                     XXXXXXX,_______,                                   \
+                           _______,_______,                     _______,_______                                    \
+),
 
 /* Base (esc)
-   Number layer and reset
+   Reset
  */
 [LAYER_ADJUST] = LAYOUT(
     _______,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
