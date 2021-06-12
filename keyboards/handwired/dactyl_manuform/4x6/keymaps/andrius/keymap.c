@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |a|NAV |s|ALT |d|CTL |f|CMD |   g  |                  |   h  |j|CMD |k|CTL |l|ALT |   ;  |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |   z  |   x  |   c  |v|NUM |   b  |                  |   n  |   m  | ENTR | ESC  | TAB  |      |
+ * |      |   z  |   x  |   c  |v|NUM |   b  |                  |   n  |   m  | ENTR | TAB  | ESC  |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
  *               |      | ALT  |                                              |      |      |
  *               +-------------+--------------------+    +--------------------+-------------+
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAYER_QWERTY] = LAYOUT(
     XXXXXXX,  KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,XXXXXXX,   \
     AD_ESC , NAV_A,HOME_S,HOME_D,HOME_F,   KC_G,               KC_H, HOME_J, HOME_K, HOME_L,KC_SCLN,XXXXXXX,   \
-    XXXXXXX,  KC_Z,  KC_X,  KC_C, NUM_V,   KC_B,               KC_N,   KC_M, KC_ENT, KC_ESC, KC_TAB,XXXXXXX,   \
+    XXXXXXX,  KC_Z,  KC_X,  KC_C, NUM_V,   KC_B,               KC_N,   KC_M, KC_ENT, KC_TAB, KC_ESC,XXXXXXX,   \
                   XXXXXXX,KC_LALT,                                          XXXXXXX,XXXXXXX,                   \
                                       SHIFT, KC_SPC,            KC_BSPC,  SYM  ,                              \
                                       SYM  , AD_RST,            AD_RST,  SHIFT,                     \
