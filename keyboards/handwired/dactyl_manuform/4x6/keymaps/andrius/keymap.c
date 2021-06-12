@@ -49,6 +49,8 @@ enum {
 // Switch to function layer when held, escape when tapped
 #define AD_ESC LT(LAYER_ADJUST, KC_ESCAPE)
 
+#define AD_RST OSL(LAYER_ADJUST)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Base (qwerty)
@@ -57,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
  * |      |a|NAV |s|ALT |d|CTL |f|CMD |g|NUM |                  |h|NUM |j|CMD |k|CTL |l|ALT |   ;  |      |
  * |------+------+------+------+------+------|                  |------+------+------+------+------+------|
- * |      |   z  |   x  |   c  |   v  |   b  |                  |   n  |   m  | ENTR | ESC  | TAB  |      |
+ * |      |   z  |   x  |   c  |   v  |   b  |                  |   n  |   m  | ENTR | TAB  | ESC  |      |
  * +------+------+------+------+-------------+                  +-------------+------+------+------+------+
  *               |      | ALT  |                                              |      |      |
  *               +-------------+--------------------+    +--------------------+-------------+
@@ -67,10 +69,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAYER_QWERTY] = LAYOUT(
     XXXXXXX,  KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,XXXXXXX,   \
     AD_ESC , NAV_A,HOME_S,HOME_D,HOME_F,  NUM_G,              NUM_H, HOME_J, HOME_K, HOME_L,KC_SCLN, KC_ENT,   \
-    XXXXXXX,  KC_Z,  KC_X,  KC_C,  KC_V,   KC_B,               KC_N,   KC_M, KC_ENT, KC_ESC, KC_TAB,XXXXXXX,   \
+    XXXXXXX,  KC_Z,  KC_X,  KC_C,  KC_V,   KC_B,               KC_N,   KC_M, KC_ENT, KC_TAB, KC_ESC,XXXXXXX,   \
                   XXXXXXX,KC_LALT,                                          XXXXXXX,XXXXXXX,                   \
                                       SHIFT, KC_SPC,            KC_BSPC,  SYM  ,                              \
-                                      SYM  ,XXXXXXX,            XXXXXXX,  SHIFT,                     \
+                                      SYM  , AD_RST,            AD_RST,  SHIFT,                     \
                                     XXXXXXX,XXXXXXX,              FN   ,XXXXXXX                              \
 ),
 
@@ -196,7 +198,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    Reset
  */
 [LAYER_ADJUST] = LAYOUT(
-    _______,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
+    KC_CRST,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
     _______,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
     _______,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
                     _______,_______,                                         XXXXXXX,_______,                      \
