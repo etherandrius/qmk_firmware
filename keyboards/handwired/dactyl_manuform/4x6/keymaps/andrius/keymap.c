@@ -47,6 +47,8 @@ enum {
 // Switch to function layer when held, escape when tapped
 #define AD_ESC LT(LAYER_ADJUST, KC_ESCAPE)
 
+#define AD_RST OSL(LAYER_ADJUST)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Base (qwerty)
@@ -68,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,  KC_Z,  KC_X,  KC_C, NUM_V,   KC_B,               KC_N,   KC_M, KC_ENT, KC_ESC, KC_TAB,XXXXXXX,   \
                   XXXXXXX,KC_LALT,                                          XXXXXXX,XXXXXXX,                   \
                                       SHIFT, KC_SPC,            KC_BSPC,  SYM  ,                              \
-                                      SYM  ,XXXXXXX,            XXXXXXX,  SHIFT,                     \
+                                      SYM  , AD_RST,            AD_RST,  SHIFT,                     \
                                     XXXXXXX,XXXXXXX,              FN   ,XXXXXXX                              \
 ),
 
@@ -181,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    Reset
  */
 [LAYER_ADJUST] = LAYOUT(
-    _______,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
+    KC_CRST,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
     _______,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
     _______,_______,_______,_______,_______,_______,            _______,XXXXXXX,XXXXXXX,XXXXXXX,_______,KC_CRST,   \
                     _______,_______,                                         XXXXXXX,_______,                      \
