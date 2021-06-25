@@ -16,6 +16,19 @@ extern rgblight_config_t rgblight_config;
 
 extern uint8_t is_master;
 
+// Each layer gets a name for readability, which is then used in the keymap matrix below.
+// The underscores don't mean anything - you can have a layer called STUFF or any other name.
+// Layer names don't all need to be of the same length, obviously, and you can also skip them
+// entirely and just use numbers.
+/*
+#define _QWERTY 0
+#define _ADJUST 1
+#define _NUMBER 2
+#define _NAV 3
+#define _SYMBOL 4
+#define _FN 4
+*/
+
 enum {
     LAYER_QWERTY = 0,
     LAYER_ADJUST,
@@ -225,24 +238,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /*       layer_off(_ADJUST); */
     /*     } */
     /*     return false; */
-    case RGB_MOD:
-      #ifdef RGBLIGHT_ENABLE
-        if (record->event.pressed) {
-          rgblight_mode(RGB_current_mode);
-          rgblight_step();
-          RGB_current_mode = rgblight_config.mode;
-        }
-      #endif
-      return false;
-    case RGBRST:
-      #ifdef RGBLIGHT_ENABLE
-        if (record->event.pressed) {
-          eeconfig_update_rgblight_default();
-          rgblight_enable();
-          RGB_current_mode = rgblight_config.mode;
-        }
-      #endif
-      break;
+    /* case RGB_MOD: */
+    /*   #ifdef RGBLIGHT_ENABLE */
+    /*     if (record->event.pressed) { */
+    /*       rgblight_mode(RGB_current_mode); */
+    /*       rgblight_step(); */
+    /*       RGB_current_mode = rgblight_config.mode; */
+    /*     } */
+    /*   #endif */
+    /*   return false; */
+    /* case RGBRST: */
+    /*   #ifdef RGBLIGHT_ENABLE */
+    /*     if (record->event.pressed) { */
+    /*       eeconfig_update_rgblight_default(); */
+    /*       rgblight_enable(); */
+    /*       RGB_current_mode = rgblight_config.mode; */
+    /*     } */
+    /*   #endif */
+    /*   break; */
   }
   return true;
 }
