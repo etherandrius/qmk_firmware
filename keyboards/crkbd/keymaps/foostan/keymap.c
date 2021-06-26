@@ -47,18 +47,7 @@ enum macro_keycodes {
   KC_SAMPLEMACRO,
 };
 
-#define KC______ KC_TRNS
 #define KC_XXXXX KC_NO
-#define KC_RST   RESET
-#define KC_LRST  RGBRST
-#define KC_LTOG  RGB_TOG
-#define KC_LHUI  RGB_HUI
-#define KC_LHUD  RGB_HUD
-#define KC_LSAI  RGB_SAI
-#define KC_LSAD  RGB_SAD
-#define KC_LVAI  RGB_VAI
-#define KC_LVAD  RGB_VAD
-#define KC_LMOD  RGB_MOD
 #define KC_GUIEI GUI_T(KC_LANG2)
 #define KC_ALTKN ALT_T(KC_LANG1)
 
@@ -84,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_QWERTY] = LAYOUT_kc( \
       XXXXX,     Q,     W,     E,     R,     T,                      Y,     U,     I,     O,     P, XXXXX,\
       XXXXX, NAV_A,HOME_S,HOME_D,HOME_F,     G,                      H,HOME_J,HOME_K,HOME_L,   SCLN,XXXXX,\
-      XXXXX,     Z,     X,     C, NUM_V,     B,                      N,     M,  ENT ,   TAB,  ESC , XXXXX,\
+      XXXXX,     Z,     X,     C, NUM_V,     B,                      N,     M,  ENT ,   TAB,   ESC ,XXXXX,\
                            ADJUST, SHIFT,   SPC,                   BSPC,   SYM, FN \
   ),
 
@@ -117,11 +106,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               _______,_______,_______,            _______,_______,_______ \
   ),
 
-  [LAYER_ADJUST] = LAYOUT_kc( \
-      XXXXX,   RST,  LRST, XXXXX, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
-      XXXXX,  LTOG,  LHUI,  LSAI,  LVAI, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
-      XXXXX,  LMOD,  LHUD,  LSAD,  LVAD, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
-                           _____, _____, _____,                  _____, _____, _____ \
+  [LAYER_ADJUST] = LAYOUT(
+      XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,\
+      XXXXXXX,RGB_TOG,RGB_HUI,RGB_SAI,RGB_VAI,XXXXXXX,                XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,\
+      XXXXXXX,RGB_MOD,RGB_HUD,RGB_SAD,RGB_VAD,XXXXXXX,                XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,\
+                              _______,_______,_______,                _______,_______,_______ \
   )
 };
 
@@ -208,36 +197,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 
   switch (keycode) {
-    /* case QWERTY: */
-    /*   if (record->event.pressed) { */
-    /*     persistent_default_layer_set(1UL<<_QWERTY); */
-    /*   } */
-    /*   return false; */
-    /* case LOWER: */
-    /*   if (record->event.pressed) { */
-    /*     layer_on(_LOWER); */
-    /*     update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST); */
-    /*   } else { */
-    /*     layer_off(_LOWER); */
-    /*     update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST); */
-    /*   } */
-    /*   return false; */
-    /* case RAISE: */
-    /*   if (record->event.pressed) { */
-    /*     layer_on(_RAISE); */
-    /*     update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST); */
-    /*   } else { */
-    /*     layer_off(_RAISE); */
-    /*     update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST); */
-    /*   } */
-    /*   return false; */
-    /* case ADJUST: */
-    /*     if (record->event.pressed) { */
-    /*       layer_on(_ADJUST); */
-    /*     } else { */
-    /*       layer_off(_ADJUST); */
-    /*     } */
-    /*     return false; */
     /* case RGB_MOD: */
     /*   #ifdef RGBLIGHT_ENABLE */
     /*     if (record->event.pressed) { */
@@ -257,5 +216,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /*   #endif */
     /*   break; */
   }
+
   return true;
 }
