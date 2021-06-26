@@ -1,4 +1,7 @@
 
+EXTRAKEY_ENABLE    = yes  # Audio control and System control(+450)
+RGB_MATRIX_ENABLE = WS2812
+
 # If you want to change the display of OLED, you need to change here
 SRC +=  ./lib/glcdfont.c \
         ./lib/rgb_state_reader.c \
